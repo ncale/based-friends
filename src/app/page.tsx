@@ -6,9 +6,10 @@ import { DOMAIN } from "@/utils/config";
 export default async function HomePage() {
 
   const airstackData = await fetchAirstackData(347)
-  const userCards = airstackData.map((user) => {
+  const userCards = airstackData.map((user, i) => {
     return (
       <UserCard 
+        key={i}
         pfpUrl={user.avatar} 
         username={user.username} 
         castTime={user.latestFarcasterAction} 
