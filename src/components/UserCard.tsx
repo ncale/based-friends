@@ -7,8 +7,6 @@ export default function UserCard( props: {
 		onchainTime: Date | null 
 	} ) {
 
-	
-
 	function createCastMsg() {
 		const milliseconds = Date.now() - props.castTime.getTime()
 		if ((milliseconds / (1000*60)) < 60) {
@@ -49,7 +47,6 @@ export default function UserCard( props: {
 		}
 	}
 	const onchainMsg = createOnchainMsg()
-
 
 	return (
 		<div className="bg-gray-200 w-72 mr-2 mb-2 rounded-md">
