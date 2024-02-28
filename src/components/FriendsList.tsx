@@ -1,12 +1,13 @@
 "use client";
 
 import UserCard from "@/components/UserCard";
-import { fetchAirstackData } from "@/pages/api/friends";
 import { useProfile } from "@farcaster/auth-kit";
 import { type FormattedAirstackData } from "@/pages/api/friends";
 import useSWR, { Fetcher } from "swr";
+import { DOMAIN } from "@/utils/config";
 
-const fetcher: Fetcher<FormattedAirstackData[], string> = (fid: string) => fetchAirstackData(Number(fid))
+const fetcher: Fetcher<FormattedAirstackData[], string> = (fid: string) => 
+	fetch(`${DOMAIN}/api/friends?fid=${fid}`).then(res => res.json())
 
 export default function FriendsList() {
 
@@ -16,10 +17,6 @@ export default function FriendsList() {
 	} = useProfile();
 
 	const { data, error, isLoading } = useSWR(fid ? fid.toString() : undefined, fetcher)
-	
-	// console.log(fid, fid?.toString())
-	// console.log(isAuthenticated)
-	// console.log(username)
 
 	if (!isAuthenticated || !fid) return <p>Please log in</p>
 	if (isLoading) return <p>Loading...</p>
