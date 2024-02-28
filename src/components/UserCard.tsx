@@ -8,7 +8,6 @@ export default function UserCard( props: {
 	} ) {
 
 	function createCastMsg() {
-		console.log(props.castTime)
 		const milliseconds = Date.now() - new Date(props.castTime).getTime()
 		if ((milliseconds / (1000*60)) < 60) {
 			const mins = Math.round(milliseconds / (1000*60))
