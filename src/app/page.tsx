@@ -6,7 +6,7 @@ import { DOMAIN } from "@/utils/config";
 
 export default async function HomePage() {
 
-  const airstackData = await fetchAirstackData(347)
+  const airstackData = await fetchAirstackData(20542)
   const userCards = airstackData.map((user, i) => {
     return (
       <UserCard 
@@ -22,7 +22,7 @@ export default async function HomePage() {
     <main className="flex">
       {/* side bar */}
       <SideBar />
-      
+
       {/* main body */}
       <div className="w-full p-2">
         <section>
