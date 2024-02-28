@@ -1,18 +1,15 @@
 import { AirstackResponse } from '@/airstack.types';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export async function GET(req: NextRequest) {
-    const url = new URL(req.url);
-    const fid = url.searchParams.get('fid');
+export default async function GET(req: NextApiRequest, res: NextApiResponse) {
+    const fid = req.query.fid;
 
     if (fid) {
         const data = await fetchAirstackData(Number(fid));
-
-
-        return NextResponse.json(data, { status: 200 });
+        return res.json(data);
     }
 
-    return NextResponse.json({error: 'No FID'})
+    return res.status(400).json({error: 'No FID'})
 }
 
 async function fetchAirstackData(fid: number) {
