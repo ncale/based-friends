@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import { LuUserCheck2 } from "react-icons/lu";
 import { LuUsers2 } from "react-icons/lu";
@@ -9,13 +8,13 @@ import { LuHeart } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { LuLayers } from "react-icons/lu";
 
-export default function SideBar() {
-	
-	const [searchInput, setSearchInput] = useState("");
-
-	function handleSearchChange(val: string) {
-		setSearchInput(val)
-	}
+export default function SideBar({ 
+	searchInput, 
+	onSearchChange 
+}: {
+	searchInput: string
+	onSearchChange: (inputVal: string)=>void
+}) {
 	
 	return (
     <div className="fixed top-20 w-56 text-white mt-4">
@@ -26,7 +25,7 @@ export default function SideBar() {
 					type="search" 
 					placeholder="Search..."
 					value={searchInput}
-					onChange={(e) => handleSearchChange(e.target.value)}
+					onChange={(e) => onSearchChange(e.target.value)}
 					className="leading-none rounded-sm shadow-sm w-full bg-transparent ml-1"
 				/>
 			</div>
