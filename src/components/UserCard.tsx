@@ -54,6 +54,24 @@ export default function UserCard( props: {
 	}
 	const onchainMsg = props.onchainTime ? createOnchainMsg(Date.now() - new Date(props.onchainTime).getTime()) : undefined
 
+	const castTooltip = (
+		<div>
+			<span className="block text-xs leading-none">{castMsg}</span>
+		</div>
+	)
+	const baseTooltip = (
+		<div>
+			<span className="block text-xs leading-none">{onchainMsg}</span>
+		</div>
+	)
+	const infoTooltip = (
+		<div>
+			<span className="block text-xs leading-none">fid: {'250'}</span>
+			<span className="block text-xs leading-none">{'250'} likes</span>
+			<span className="block text-xs leading-none">{'12'} recasts</span>
+		</div>
+	) // placeholder data
+
 	return (
 		<div className="bg-gray-200 rounded-md p-1.5 truncate flex justify-between">
 			{/* profile */}
@@ -79,32 +97,25 @@ export default function UserCard( props: {
 					{/* online / active bar */}
 					<div className="flex items-center mb-0.5">
 						<IconContext.Provider value={{color: 'green', size:'8px'}}>
-							<LuCircle />
+							<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+								<span className=""><LuCircle /></span>
+							</Tooltip>
 						</IconContext.Provider>
 						<span className="text-xs leading-none ml-0.5 mr-1">online</span>
 						<IconContext.Provider value={{color: 'blue', size:'8px'}}>
-							<LuCircle />
+							<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+								<span className=""><LuCircle /></span>
+							</Tooltip>
 						</IconContext.Provider>
 						<span className="text-xs leading-none ml-0.5">active onchain</span>
 					</div>
-					{/* cast / onchain recency */}
-					{/* <span className="block text-xs leading-none">{castMsg}</span> */}
-					{/* <span className="block text-xs leading-none">{onchainMsg}</span> */}
 				</div>
 			</div>
 			{/* user stats */}
 			<div className="flex flex-col">
 				<IconContext.Provider value={{size:'12px'}}>
-					<Tooltip content={
-						<div>
-							<span className="block text-xs leading-none">fid: {'250'}</span>
-							<span className="block text-xs leading-none">{'250'} likes</span>
-							<span className="block text-xs leading-none">{'12'} recasts</span>
-						</div>
-					} size="sm" radius="sm" closeDelay={10} showArrow={true} placement="right">
-						<span>
-							<LuInfo />
-						</span>
+					<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
+						<span><LuInfo /></span>
 					</Tooltip>
 				</IconContext.Provider>
 			</div>
