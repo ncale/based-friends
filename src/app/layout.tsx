@@ -7,6 +7,7 @@ import AuthKitProvider from '@/components/AuthKitProvider';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { DOMAIN } from "@/utils/config";
+import NextUIProvider from '@/components/NextUIProvider';
 
 const font = Roboto({ subsets: ["latin"], weight: '400' });
 
@@ -33,7 +34,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.className} box-border pt-20 flex flex-col`} style={{backgroundColor: '#313131'}}>
-        <SessionProvider session={session}><AuthKitProvider config={config}>
+        <SessionProvider session={session}><AuthKitProvider config={config}><NextUIProvider>
 
           {/* Header */}
           <Header />
@@ -44,7 +45,7 @@ export default async function RootLayout({
           {/* Footer */}
           <Footer />
 
-        </AuthKitProvider></SessionProvider>
+          </NextUIProvider></AuthKitProvider></SessionProvider>
       </body>
     </html>
   );
