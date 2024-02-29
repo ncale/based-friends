@@ -26,7 +26,11 @@ export default function FriendsList() {
 	if (error) return <ErrorPage />
 	if (!data) return <p>Friends not found. Refresh.</p>
 
-	const userCards = data.map((user, i) => {
+	const searchInput = new RegExp('cc') // sample search query
+
+	const filteredData = data.filter((user) => searchInput.test(user.username))
+
+	const userCards = filteredData.map((user, i) => {
 		return (
 			<UserCard 
 				key={i}
