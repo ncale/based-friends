@@ -49,7 +49,7 @@ export default function UserCard( props: {
 	const onchainMsg = createOnchainMsg()
 
 	return (
-		<div className="bg-gray-200 w-72 mr-2 mb-2 rounded-md">
+		<div className="bg-gray-200 rounded-md truncate">
 			<div className="flex p-2 items-center">
 				{/* pfp */}
 				{props.pfpUrl ? (
