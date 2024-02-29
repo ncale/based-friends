@@ -32,7 +32,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${font.className} box-border flex flex-col`} style={{backgroundColor: '#313131'}}>
+      <body className={`${font.className} box-border pt-20 flex flex-col`} style={{backgroundColor: '#313131'}}>
         <SessionProvider session={session}><AuthKitProvider config={config}>
 
           {/* Header */}
@@ -43,6 +43,7 @@ export default async function RootLayout({
 
           {/* Footer */}
           <Footer />
+
         </AuthKitProvider></SessionProvider>
       </body>
     </html>

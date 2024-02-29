@@ -9,7 +9,7 @@ export default async function HomePage() {
       <SideBar />
       
       {/* main body */}
-      <div className="w-full p-2">
+      <div className="w-full pl-2 ml-56">
         <FriendsList />
       </div>
     </main>

@@ -8,7 +8,7 @@ import { LuLayers } from "react-icons/lu";
 
 export default function SideBar() {
 	return (
-    <div className="w-56 text-white mt-4">
+    <div className="fixed top-20 w-56 text-white mt-4">
 			{/* Search Box */}
 			<div className="mt-1 flex items-center">
 				<LuSearch />
