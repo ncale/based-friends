@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { IconContext } from "react-icons";
+import { LuCircle } from "react-icons/lu";
 
 export default function UserCard( props: { 
 		pfpUrl: string | undefined, 
@@ -7,8 +9,7 @@ export default function UserCard( props: {
 		onchainTime: Date | null 
 	} ) {
 
-	function createCastMsg() {
-		const milliseconds = Date.now() - new Date(props.castTime).getTime()
+	function createCastMsg(milliseconds: number) {
 		if ((milliseconds / (1000)) < 60) {
 			return `Casted seconds ago`
 		} else if ((milliseconds / (1000*60)) < 60) {
@@ -27,11 +28,10 @@ export default function UserCard( props: {
 			return 'Casted... a long time ago'
 		}
 	}
-	const castMsg = createCastMsg()
+	const castMillisDiff = Date.now() - new Date(props.castTime).getTime()
+	const castMsg = createCastMsg(castMillisDiff)
 
-	function createOnchainMsg() {
-		if (!props.onchainTime) return 
-		const milliseconds = Date.now() - new Date(props.onchainTime).getTime()
+	function createOnchainMsg(milliseconds: number) {
 		if ((milliseconds / (1000)) < 60) {
 			return `Casted seconds ago`
 		} else if ((milliseconds / (1000*60)) < 60) {
@@ -50,7 +50,7 @@ export default function UserCard( props: {
 			return 'Onchain... a long time ago'
 		}
 	}
-	const onchainMsg = createOnchainMsg()
+	const onchainMsg = props.onchainTime ? createOnchainMsg(Date.now() - new Date(props.onchainTime).getTime()) : undefined
 
 	return (
 		<div className="bg-gray-200 rounded-md truncate">
@@ -69,10 +69,22 @@ export default function UserCard( props: {
 				)}
 				{/* user info */}
 				<div className="pl-2">
+					{/* username */}
 					<h3 className="text-sm font-bold leading-none">{props.username}</h3>
-					<p className="text-xs leading-none">active?</p>
-					<p className="text-xs leading-none">{castMsg}</p>
-					<p className="text-xs leading-none">{onchainMsg}</p>
+					{/* online / active bar */}
+					<div className="flex items-center mb-0.5">
+						<IconContext.Provider value={{color: 'green', size:'10px'}}>
+							<LuCircle />
+						</IconContext.Provider>
+						<span className="text-xs leading-none ml-0.5 mr-1">online</span>
+						<IconContext.Provider value={{color: 'green', size:'10px'}}>
+							<LuCircle />
+						</IconContext.Provider>
+						<span className="text-xs leading-none ml-0.5">active onchain</span>
+					</div>
+					{/* cast / onchain recency */}
+					<span className="block text-xs leading-none">{castMsg}</span>
+					<span className="block text-xs leading-none">{onchainMsg}</span>
 				</div>
 			</div>
 		</div>
