@@ -21,7 +21,9 @@ interface FollowingAddress {
 
 interface Social {
     dappName: string
+    profileDisplayName: string
     profileName: string
+    userId: string
     profileImageContentValue: ProfileImageContentValue
     updatedAt: string
 }
