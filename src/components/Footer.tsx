@@ -1,9 +1,7 @@
 export default async function Footer() {
 	return (
-		<footer className="flex justify-end px-20 w-full">
+		<footer className="fixed bottom-0 flex justify-end px-20 py-2 w-full bg-inherit">
 			<small className="text-white">Made by Onchain Clarity Co.</small>
 		</footer>
 	);
 }
-
-// style={{position: 'absolute', bottom: '20px', width: '100%', textAlign: 'right', paddingRight: '150px'}}
