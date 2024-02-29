@@ -40,7 +40,7 @@ export default function SideBar({
 					<button
 						type="button" 
 						className="cursor-pointer hover:text-lightblue active:text-darkblue ml-1">
-						Following <span className="text-xs">{'(100)'}</span>
+						Following
 					</button>
 				</li>
 				<li className="text-sm leading-none mb-1 flex items-center">
@@ -48,7 +48,7 @@ export default function SideBar({
 					<button 
 						type="button" 
 						className="cursor-pointer hover:text-lightblue active:text-darkblue ml-1">
-						Mutual <span className="text-xs">{'(70)'}</span>
+						Mutual
 					</button>
 				</li>
 				<li className="text-sm leading-none mb-1 flex items-center">
@@ -56,7 +56,7 @@ export default function SideBar({
 					<button 
 						type="button" 
 						className="cursor-pointer hover:text-lightblue active:text-darkblue ml-1">
-						Doesn't Follow Back <span className="text-xs">{'(30)'}</span>
+						{"Doesn't Follow Back"}
 					</button>
 				</li> 
 			</ul>
