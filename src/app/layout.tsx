@@ -20,7 +20,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" style={{backgroundColor: '#313131'}}>
-      <body className={`${font.className} box-border pt-20 flex flex-col bg-inherit`}>
+      <body className={`${font.className} box-border pt-20 pb-10 flex flex-col bg-inherit`}>
         <Providers>
 
           {/* Header */}
