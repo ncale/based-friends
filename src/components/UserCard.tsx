@@ -36,6 +36,7 @@ export default function UserCard( props: {
 		}
 	}
 	const castMillisDiff = Date.now() - new Date(props.castTime).getTime()
+	const isOnline = ((castMillisDiff / (1000*60)) < 10)
 	const castMsg = createCastMsg(castMillisDiff)
 
 	function createOnchainMsg(milliseconds: number) {
@@ -108,13 +109,18 @@ export default function UserCard( props: {
 					</div>
 					{/* online / active bar */}
 					<div className="flex items-center mb-0.5">
-						<IconContext.Provider value={{color: 'green', size:'8px'}}>
+						{/* online button */}
+						<a href={`https://warpcast.com/${props.username}`} target="_blank" className="cursor-default">
 							<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-								<span className=""><LuCircle /></span>
+								{isOnline ? (
+									<span className="text-xs leading-none cursor-default rounded-sm px-1 bg-green-400 text-green-950 font-bold">online</span>
+								) : (
+									<span className="text-xs leading-none cursor-default">offline</span>
+								)}
 							</Tooltip>
-						</IconContext.Provider>
-						<span className="text-xs leading-none cursor-default ml-0.5 mr-1">online</span>
-						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="flex items-center cursor-default">
+						</a>
+						{/* onchain button */}
+						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="cursor-default">
 							{isActiveOnchain ? (
 								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
 									<span className="text-xs leading-none cursor-default ml-0.5 rounded-sm px-1 py-0.5 bg-blue-700 text-white font-bold">
