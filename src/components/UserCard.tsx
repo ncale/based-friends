@@ -112,7 +112,7 @@ export default function UserCard( props: {
 								{isOnline ? (
 									<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">online</span>
 								) : (
-									<span className="text-xs leading-none rounded-md px-1 bg-red-100 text-red-950 font-bold">offline</span>
+									<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold">offline</span>
 								)}
 							</Tooltip>
 						</a>
@@ -126,7 +126,7 @@ export default function UserCard( props: {
 								</Tooltip>
 							) : (
 								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-									<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-red-100 text-red-950 font-bold">
+									<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold">
 										not active onchain
 									</span>
 								</Tooltip>
