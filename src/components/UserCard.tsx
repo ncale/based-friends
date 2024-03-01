@@ -9,8 +9,9 @@ export default function UserCard( props: {
 		username: string
 		fid: string
 		pfpUrl: string | undefined
-		castTime: Date, 
-		onchainTime: Date | undefined 
+		castTime: Date
+		onchainTime: Date | undefined
+		onchainHash: string | undefined
 	} ) {
 
 	function createCastMsg(milliseconds: number) {
@@ -54,7 +55,13 @@ export default function UserCard( props: {
 			return 'Onchain... a long time ago'
 		}
 	}
-	const onchainMsg = props.onchainTime ? createOnchainMsg(Date.now() - new Date(props.onchainTime).getTime()) : undefined
+	let isActiveOnchain: boolean = false
+	let onchainMsg: string = 'hmm... no base txns found'
+	if (props.onchainTime) {
+		const onchainMillisDiff = Date.now() - new Date(props.onchainTime).getTime()
+		isActiveOnchain = ((onchainMillisDiff) / (1000*60*60*24)) < 24
+		onchainMsg = createOnchainMsg(onchainMillisDiff)
+	} 
 
 	const castTooltip = (
 		<div>
@@ -104,12 +111,23 @@ export default function UserCard( props: {
 							</Tooltip>
 						</IconContext.Provider>
 						<span className="text-xs leading-none cursor-default ml-0.5 mr-1">online</span>
-						<IconContext.Provider value={{color: 'blue', size:'8px'}}>
-							<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-								<span className=""><LuCircle /></span>
-							</Tooltip>
-						</IconContext.Provider>
-						<span className="text-xs leading-none cursor-default ml-0.5">active onchain</span>
+						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="flex items-center cursor-default">
+							{isActiveOnchain ? (
+								<><IconContext.Provider value={{color: 'blue', size:'8px'}}>
+									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+										<span className=""><LuCircle /></span>
+									</Tooltip>
+								</IconContext.Provider>
+								<span className="text-xs leading-none cursor-default ml-0.5">active onchain</span></>
+							) : (
+								<><IconContext.Provider value={{color: 'red', size:'8px'}}>
+									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+										<span className=""><LuCircle /></span>
+									</Tooltip>
+								</IconContext.Provider>
+								<span className="text-xs leading-none cursor-default ml-0.5">not active onchain</span></>
+							)}
+						</a>
 					</div>
 				</div>
 			</div>

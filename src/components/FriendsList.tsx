@@ -12,7 +12,8 @@ export default function FriendsList({ userList }: { userList: FormattedAirstackD
 				fid={user.fid}
 				pfpUrl={user.avatar}
 				castTime={user.latestFarcasterAction} 
-				onchainTime={user.latestBaseAction} />
+				onchainTime={user.latestBaseAction} 
+				onchainHash={user.latestBaseActionHash} />
 		)
 	})
 
