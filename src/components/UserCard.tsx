@@ -10,6 +10,7 @@ export default function UserCard( props: {
 		fid: string
 		pfpUrl: string | undefined
 		castTime: Date
+		followsMe: boolean
 		onchainTime: Date | undefined
 		onchainHash: string | undefined
 	} ) {
@@ -100,9 +101,12 @@ export default function UserCard( props: {
 				{/* profile info */}
 				<div className="flex flex-col ml-1">
 					{/* display name */}
-					<h3 className="text-md leading-none cursor-default">{props.displayName}</h3>
+					<h3 className="text-md leading-none cursor-default font-extrabold">{props.displayName}</h3>
 					{/* username */}
-					<h3 className="text-sm leading-none cursor-default">{props.username}</h3>
+					<div className="flex items-center">
+						<span className="text-sm leading-tight cursor-default">{props.username}</span>
+						{props.followsMe ? <span className="text-xs leading-none rounded-sm ml-1.5" style={{border: "1px solid black", padding: "1px"}}>follows you</span> : ''}
+					</div>
 					{/* online / active bar */}
 					<div className="flex items-center mb-0.5">
 						<IconContext.Provider value={{color: 'green', size:'8px'}}>
