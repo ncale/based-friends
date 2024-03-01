@@ -32,6 +32,11 @@ export async function fetchAirstackData(fid: number) {
               updatedAt
               profileDisplayName
               userId
+              followings(input: {filter: {followingProfileId: {_eq: "${fid}"}}}) {
+                Following {
+                  followingProfileId
+                }
+              }
             }
             tokenTransfers(input: {blockchain: base, order: [{blockTimestamp: DESC}]}) {
               blockTimestamp
@@ -71,7 +76,13 @@ export async function fetchAirstackData(fid: number) {
       latestBaseAction.blockTimestamp = maxTimeObj.blockTimestamp
       latestBaseAction.transactionHash = maxTimeObj.transactionHash
     }
-    
+
+    const followsMe = user.followingAddress.socials[0].followings.Following ? (
+      user.followingAddress.socials[0].followings.Following[0].followingProfileId === fid.toString()
+    ) : (
+      false
+    )
+
     return {
       displayName: user.followingAddress.socials[0].profileDisplayName,
       username: user.followingAddress.socials[0].profileName,
@@ -80,6 +91,7 @@ export async function fetchAirstackData(fid: number) {
       latestFarcasterAction: new Date(user.followingAddress.socials[0].updatedAt),
       latestBaseAction: latestBaseAction.blockTimestamp ? new Date(latestBaseAction.blockTimestamp) : undefined,
       latestBaseActionHash: latestBaseAction.transactionHash ? latestBaseAction.transactionHash : undefined,
+      followsMe: followsMe
     }
   })
 
@@ -94,4 +106,5 @@ export type FormattedAirstackData = {
   latestFarcasterAction: Date
   latestBaseAction: Date | undefined
   latestBaseActionHash: string | undefined
+  followsMe: boolean
 }

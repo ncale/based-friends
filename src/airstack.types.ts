@@ -26,6 +26,15 @@ interface Social {
     userId: string
     profileImageContentValue: ProfileImageContentValue
     updatedAt: string
+    followings: Followings
+}
+
+interface Followings {
+    Following: UserFollowing[]
+}
+
+interface UserFollowing {
+    followingProfileId: string
 }
 
 interface ProfileImageContentValue {
