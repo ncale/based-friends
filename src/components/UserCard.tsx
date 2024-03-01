@@ -116,19 +116,17 @@ export default function UserCard( props: {
 						<span className="text-xs leading-none cursor-default ml-0.5 mr-1">online</span>
 						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="flex items-center cursor-default">
 							{isActiveOnchain ? (
-								<><IconContext.Provider value={{color: 'blue', size:'8px'}}>
-									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-										<span className=""><LuCircle /></span>
-									</Tooltip>
-								</IconContext.Provider>
-								<span className="text-xs leading-none cursor-default ml-0.5">active onchain</span></>
+								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+									<span className="text-xs leading-none cursor-default ml-0.5 rounded-sm px-1 py-0.5 bg-blue-700 text-white font-bold">
+										active onchain
+									</span>
+								</Tooltip>
 							) : (
-								<><IconContext.Provider value={{color: 'red', size:'8px'}}>
-									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-										<span className=""><LuCircle /></span>
-									</Tooltip>
-								</IconContext.Provider>
-								<span className="text-xs leading-none cursor-default ml-0.5">not active onchain</span></>
+								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+									<span className="text-xs leading-none cursor-default ml-0.5 rounded-sm px-1 py-0.5 bg-red-100 font-bold">
+										not active onchain
+									</span>
+								</Tooltip>
 							)}
 						</a>
 					</div>
