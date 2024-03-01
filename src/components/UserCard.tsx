@@ -5,8 +5,10 @@ import { LuInfo } from "react-icons/lu";
 import { Tooltip } from "@nextui-org/react";
 
 export default function UserCard( props: { 
-		pfpUrl: string | undefined, 
-		username: string, 
+		displayName: string
+		username: string
+		fid: string
+		pfpUrl: string | undefined
 		castTime: Date, 
 		onchainTime: Date | undefined 
 	} ) {
@@ -66,7 +68,7 @@ export default function UserCard( props: {
 	)
 	const infoTooltip = (
 		<div>
-			<span className="block text-xs leading-none">fid: {'250'}</span>
+			<span className="block text-xs leading-none">fid: {props.fid}</span>
 			<span className="block text-xs leading-none">{'250'} likes</span>
 			<span className="block text-xs leading-none">{'12'} recasts</span>
 		</div>
@@ -91,9 +93,9 @@ export default function UserCard( props: {
 				{/* profile info */}
 				<div className="flex flex-col ml-1">
 					{/* display name */}
-					<h3 className="text-md leading-none">{'Display Name'}</h3>
+					<h3 className="text-md leading-none cursor-default">{props.displayName}</h3>
 					{/* username */}
-					<h3 className="text-sm leading-none">{props.username}</h3>
+					<h3 className="text-sm leading-none cursor-default">{props.username}</h3>
 					{/* online / active bar */}
 					<div className="flex items-center mb-0.5">
 						<IconContext.Provider value={{color: 'green', size:'8px'}}>
@@ -101,13 +103,13 @@ export default function UserCard( props: {
 								<span className=""><LuCircle /></span>
 							</Tooltip>
 						</IconContext.Provider>
-						<span className="text-xs leading-none ml-0.5 mr-1">online</span>
+						<span className="text-xs leading-none cursor-default ml-0.5 mr-1">online</span>
 						<IconContext.Provider value={{color: 'blue', size:'8px'}}>
 							<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
 								<span className=""><LuCircle /></span>
 							</Tooltip>
 						</IconContext.Provider>
-						<span className="text-xs leading-none ml-0.5">active onchain</span>
+						<span className="text-xs leading-none cursor-default ml-0.5">active onchain</span>
 					</div>
 				</div>
 			</div>
