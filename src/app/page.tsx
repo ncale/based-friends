@@ -27,7 +27,6 @@ function filterByParams(data: FormattedAirstackData[], query: string, filterSele
   // filter by online status
   if (filterSelection.filterIsOnline) {
     filteredData = filteredData.filter((user) => {
-      console.log("filtering is online")
       const millisecondsDiff = Date.now() - new Date(user.latestFarcasterAction).getTime()
       return ((millisecondsDiff/(1000*60)) < 10)
     })
@@ -35,9 +34,7 @@ function filterByParams(data: FormattedAirstackData[], query: string, filterSele
   // filter by onchain status
   if (filterSelection.filterIsOnchain) {
     filteredData = filteredData.filter((user) => {
-      console.log("filtering is onchain")
-      const millisecondsDiff = user.latestBaseAction ? Date.now() - new Date(user.latestBaseAction).getTime() : 1
-      return ((millisecondsDiff/(1000*60*60)) < 24)
+      return (user.latestBaseAction ? (((Date.now() - new Date(user.latestBaseAction).getTime())/(1000*60*60)) < 24) : false)
     })
   }
   // filter by search query
