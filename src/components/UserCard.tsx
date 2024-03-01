@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { IconContext } from "react-icons";
 import { LuCircle } from "react-icons/lu";
+import { LuMessagesSquare } from "react-icons/lu";
 import { LuInfo } from "react-icons/lu";
 import { Tooltip } from "@nextui-org/react";
 
@@ -134,10 +135,13 @@ export default function UserCard( props: {
 				</div>
 			</div>
 			{/* user stats */}
-			<div className="flex flex-col">
+			<div className="flex">
 				<IconContext.Provider value={{size:'12px'}}>
+					<a href="https://app.converse.xyz/conversation" target="_blank">
+						<LuMessagesSquare />
+					</a>
 					<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
-						<span><LuInfo /></span>
+						<span className="ml-1 h-min"><LuInfo /></span>
 					</Tooltip>
 				</IconContext.Provider>
 			</div>
