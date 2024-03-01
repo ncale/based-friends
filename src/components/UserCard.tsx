@@ -18,21 +18,21 @@ export default function UserCard( props: {
 
 	function createCastMsg(milliseconds: number) {
 		if ((milliseconds / (1000)) < 60) {
-			return `Casted seconds ago`
+			return `seconds ago`
 		} else if ((milliseconds / (1000*60)) < 60) {
 			const mins = Math.round(milliseconds / (1000*60))
-			return `Casted ${mins} min${(mins==1) ? '' : 's'} ago`
+			return `${mins} min${(mins==1) ? '' : 's'} ago`
 		} else if ((milliseconds / (1000*60*60)) < 24) {
 			const hours = Math.round(milliseconds / (1000*60*60))
-			return `Casted ${hours} hr${(hours==1) ? '' : 's'} ago`
+			return `${hours} hr${(hours==1) ? '' : 's'} ago`
 		} else if ((milliseconds / (1000*60*60*24)) < 30) {
 			const days = Math.round(milliseconds / (1000*60*60*24))
-			return `Casted ${days} day${(days==1) ? '' : 's'} ago`
+			return `${days} day${(days==1) ? '' : 's'} ago`
 		} else if ((milliseconds / (1000*60*60*24*30)) < 6) {
 			const months = Math.round(milliseconds / (1000*60*60*24*30))
-			return `Casted ${months} mo${(months==1) ? '' : 's'} ago`
+			return `${months} mo${(months==1) ? '' : 's'} ago`
 		} else {
-			return 'Casted... a long time ago'
+			return '... a long time ago'
 		}
 	}
 	const castMillisDiff = Date.now() - new Date(props.castTime).getTime()
@@ -40,21 +40,21 @@ export default function UserCard( props: {
 
 	function createOnchainMsg(milliseconds: number) {
 		if ((milliseconds / (1000)) < 60) {
-			return `Casted seconds ago`
+			return `seconds ago`
 		} else if ((milliseconds / (1000*60)) < 60) {
 			const mins = Math.round(milliseconds / (1000*60))
-			return `Onchain ${mins} min${(mins==1) ? '' : 's'} ago`
+			return `${mins} min${(mins==1) ? '' : 's'} ago`
 		} else if ((milliseconds / (1000*60*60)) < 24) {
 			const hours = Math.round(milliseconds / (1000*60*60))
-			return `Onchain ${hours} hr${(hours==1) ? '' : 's'} ago`
+			return `${hours} hr${(hours==1) ? '' : 's'} ago`
 		} else if ((milliseconds / (1000*60*60*24)) < 30) {
 			const days = Math.round(milliseconds / (1000*60*60*24))
-			return `Onchain ${days} day${(days==1) ? '' : 's'} ago`
+			return `${days} day${(days==1) ? '' : 's'} ago`
 		} else if ((milliseconds / (1000*60*60*24*30)) < 6) {
 			const months = Math.round(milliseconds / (1000*60*60*24*30))
-			return `Onchain ${months} mo${(months==1) ? '' : 's'} ago`
+			return `${months} mo${(months==1) ? '' : 's'} ago`
 		} else {
-			return 'Onchain... a long time ago'
+			return '... a long time ago'
 		}
 	}
 	let isActiveOnchain: boolean = false
