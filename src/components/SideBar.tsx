@@ -78,16 +78,22 @@ export default function SideBar({
 				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuMessagesSquare />
 					<button 
-						type="button" 
-						className="cursor-pointer hover:text-lightblue active:text-darkblue ml-1">
+						type="button"
+						name="isOnlineButton"
+						value={"isOnline"}
+						onClick={onFilterChange}
+						className={`cursor-pointer ml-1 ${(filterInput.filterIsOnline ? "text-blue-400" : "")}`}>
 						Currently online
 					</button>
 				</li> 
 				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuLayers />
 					<button 
-						type="button" 
-						className="cursor-pointer hover:text-lightblue active:text-darkblue ml-1">
+						type="button"
+						name="isOnchainButton"
+						value={"isOnchain"}
+						onClick={onFilterChange}
+						className={`cursor-pointer ml-1 ${(filterInput.filterIsOnchain ? "text-blue-400" : "")}`}>
 						Active onchain
 					</button>
 				</li>

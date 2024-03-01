@@ -27,15 +27,17 @@ function filterByParams(data: FormattedAirstackData[], query: string, filterSele
   // filter by online status
   if (filterSelection.filterIsOnline) {
     filteredData = filteredData.filter((user) => {
+      console.log("filtering is online")
       const millisecondsDiff = Date.now() - new Date(user.latestFarcasterAction).getTime()
       return ((millisecondsDiff/(1000*60)) < 10)
     })
   }
   // filter by onchain status
-  if (filterSelection.filterIsOnline) {
+  if (filterSelection.filterIsOnchain) {
     filteredData = filteredData.filter((user) => {
+      console.log("filtering is onchain")
       const millisecondsDiff = user.latestBaseAction ? Date.now() - new Date(user.latestBaseAction).getTime() : 1
-      return ((millisecondsDiff/(1000*60)) < 10)
+      return ((millisecondsDiff/(1000*60*60)) < 24)
     })
   }
   // filter by search query
@@ -67,11 +69,27 @@ export default function HomePage() {
 
   // sort & filter handler functions
 	function handleFollowingFilterChange(e: MouseEvent) {
-    setFilterInput({
-      followingFilter: (e.target as HTMLButtonElement).value,
-      filterIsOnline: false,
-      filterIsOnchain: false,
-    })
+    const val = (e.target as HTMLButtonElement).value
+    console.log(val)
+    if (["following", "mutual", "not following"].includes(val)) {
+      setFilterInput({
+        followingFilter: (e.target as HTMLButtonElement).value,
+        filterIsOnline: filterInput.filterIsOnline,
+        filterIsOnchain: filterInput.filterIsOnchain,
+      })
+    } else if (val === "isOnline") {
+      setFilterInput({
+        followingFilter: filterInput.followingFilter,
+        filterIsOnline: !filterInput.filterIsOnline,
+        filterIsOnchain: filterInput.filterIsOnchain,
+      })
+    } else if (val === "isOnchain") {
+      setFilterInput({
+        followingFilter: filterInput.followingFilter,
+        filterIsOnline: filterInput.filterIsOnline,
+        filterIsOnchain: !filterInput.filterIsOnchain,
+      })
+    }
   }
   function handleSearchChange(val: string) {
 		setSearchInput(val)
