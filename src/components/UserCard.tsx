@@ -77,8 +77,6 @@ export default function UserCard( props: {
 	const infoTooltip = (
 		<div>
 			<span className="block text-xs leading-none">fid: {props.fid}</span>
-			<span className="block text-xs leading-none">{'250'} likes</span>
-			<span className="block text-xs leading-none">{'12'} recasts</span>
 		</div>
 	) // placeholder data
 
