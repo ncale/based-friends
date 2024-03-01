@@ -3,7 +3,7 @@ import { IconContext } from "react-icons";
 import { LuCircle } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { LuInfo } from "react-icons/lu";
-import { Tooltip } from "@nextui-org/react";
+import { Avatar, Tooltip } from "@nextui-org/react";
 
 export default function UserCard( props: { 
 		displayName: string
@@ -88,18 +88,15 @@ export default function UserCard( props: {
 			<div className="flex items-center">
 				{/* pfp */}
 				{props.pfpUrl ? (
-					<Image 
-						src={props.pfpUrl} 
-						alt={`${props.username} profile picture`}
-						width={300}
-						height={300}
-						className="rounded-full max-w-12 max-h-12 w-12 h-12"
-					/>
+					<Avatar 
+						isBordered
+						src={props.pfpUrl}
+						size="lg" />
 				) : (
 					<></>
 				)}
 				{/* profile info */}
-				<div className="flex flex-col ml-1">
+				<div className="flex flex-col ml-1.5">
 					{/* display name */}
 					<h3 className="text-md leading-none cursor-default font-extrabold">{props.displayName}</h3>
 					{/* username */}
