@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { IconContext } from "react-icons";
-import { LuCircle } from "react-icons/lu";
+import { LuLayers } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { LuInfo } from "react-icons/lu";
 import { Avatar, Tooltip } from "@nextui-org/react";
@@ -142,9 +141,14 @@ export default function UserCard( props: {
 			</div>
 			{/* user stats */}
 			<div className="flex">
+				<IconContext.Provider value={{size: '11px'}}>
+					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+						<span><LuLayers /></span>
+					</a>
+				</IconContext.Provider>
 				<IconContext.Provider value={{size:'12px'}}>
-					<a href="https://app.converse.xyz/conversation" target="_blank">
-						<LuMessagesSquare />
+					<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-1">
+						<span className="h-min"><LuMessagesSquare /></span>
 					</a>
 					<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
 						<span className="ml-1 h-min"><LuInfo /></span>
