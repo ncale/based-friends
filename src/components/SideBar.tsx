@@ -24,7 +24,18 @@ export default function SideBar({
 }) {
 
 	return (
-    <div className="fixed top-20 w-40 md:w-56 text-white mt-4">
+	<>
+	<div className="mt-1 mb-2 flex md:hidden items-center">
+		<LuSearch />
+		<input 
+			type="search" 
+			placeholder="Search..."
+			value={searchInput}
+			onChange={(e) => onSearchChange(e.target.value)}
+			className="leading-none rounded-sm shadow-sm w-full p-1 ml-1"
+		/>
+	</div>
+	<div className="fixed top-20 w-40 md:w-56 text-white mt-4 hidden md:block">
 			{/* Search Box */}
 			<div className="mt-1 flex items-center">
 				<LuSearch />
@@ -40,7 +51,7 @@ export default function SideBar({
 			<hr className="w-full mb-1.5"/>
 
 			{/* Filters */}
-			<ul className="">
+			<ul className="block">
 				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuUserCheck2 />
 					<button
@@ -102,7 +113,7 @@ export default function SideBar({
 			<hr className="w-full my-1.5"/>
 
 			{/* Sorts */}
-			<ul className="flex mb-1.5">
+			<ul className="hidden mb-1.5">
 				<li className="text-sm leading-none">
 					<label>
 						<input type="radio" name="sort" value="most" checked={true} />
@@ -116,7 +127,7 @@ export default function SideBar({
 					</label>
 				</li>
 			</ul>
-			<ul className="">
+			<ul className="hidden">
 				{/* <li className="text-sm leading-none mb-1 flex items-center">
 					<LuHeart />
 					<button type="button" className="ml-1">Mutual Likes</button>
@@ -135,5 +146,6 @@ export default function SideBar({
 				</li>
 			</ul>
 		</div>
+		</>
 	)
 }
