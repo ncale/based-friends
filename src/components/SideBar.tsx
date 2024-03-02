@@ -24,7 +24,7 @@ export default function SideBar({
 }) {
 
 	return (
-    <div className="fixed top-20 w-56 text-white mt-4">
+    <div className="fixed top-20 w-40 md:w-56 text-white mt-4">
 			{/* Search Box */}
 			<div className="mt-1 flex items-center">
 				<LuSearch />

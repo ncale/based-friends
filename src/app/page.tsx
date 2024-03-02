@@ -106,7 +106,7 @@ export default function HomePage() {
       <SideBar searchInput={searchInput} onSearchChange={handleSearchChange} filterInput={filterInput} onFilterChange={handleFollowingFilterChange}/>
       
       {/* main body */}
-      <div className="w-full pl-2 ml-56">
+      <div className="w-full pl-2 ml-40 md:ml-56">
         <FriendsList userList={results} />
       </div>
     </main>
