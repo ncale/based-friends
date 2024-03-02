@@ -101,7 +101,7 @@ export default function HomePage() {
   const results = filterByParams(data, searchInput, filterInput)
 
   return (
-    <main className="flex px-20">
+    <main className="flex px-2 md:px-20">
       {/* side bar */}
       <SideBar searchInput={searchInput} onSearchChange={handleSearchChange} filterInput={filterInput} onFilterChange={handleFollowingFilterChange}/>
       
