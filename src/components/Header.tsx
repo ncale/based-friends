@@ -10,7 +10,7 @@ export default async function Header() {
 					alt="based friends logo"
 					width={1018}
 					height={121}
-					className="h-12 w-auto" />
+					className="h-9 md:h-12 w-auto" />
 				<AuthButton/>
 			</div>
 			<hr className="w-full mb-2"/>
