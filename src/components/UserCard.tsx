@@ -88,10 +88,15 @@ export default function UserCard( props: {
 			<div className="flex items-center">
 				{/* pfp */}
 				{props.pfpUrl ? (
-					<Avatar 
-						isBordered
-						src={props.pfpUrl}
-						size="lg" />
+					<a href={`https://warpcast.com/${props.username}`} target="_blank">
+						<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom">
+							<Avatar 
+								isBordered
+								color={isOnline ? "success" : "default"}
+								src={props.pfpUrl}
+								size="lg" />
+						</Tooltip>
+					</a>
 				) : (
 					<></>
 				)}
