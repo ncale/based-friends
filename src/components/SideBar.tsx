@@ -10,6 +10,7 @@ import { LuMessagesSquare } from "react-icons/lu";
 import { LuLayers } from "react-icons/lu";
 import { MouseEvent } from "react";
 import { FilterSelection } from "@/app/page";
+import { IconContext } from "react-icons";
 
 export default function SideBar({ 
 	searchInput, 
@@ -26,7 +27,9 @@ export default function SideBar({
 	return (
 	<>
 	<div className="mt-1 mb-2 flex md:hidden items-center">
-		<LuSearch />
+		<IconContext.Provider value={{color: 'white'}}>
+			<LuSearch />
+		</IconContext.Provider>
 		<input 
 			type="search" 
 			placeholder="Search..."
