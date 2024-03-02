@@ -11,7 +11,7 @@ export default async function Header() {
 					width={1018}
 					height={121}
 					className="h-9 md:h-12 w-auto" />
-				<AuthButton/>
+				<span className="hidden md:inline"><AuthButton/></span>
 			</div>
 			<hr className="w-full mb-2"/>
 		</header>
