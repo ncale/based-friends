@@ -4,7 +4,7 @@ import AuthButton from "@/components/AuthButton";
 export default async function Header() {
 	return (
 		<header className="fixed top-0 z-50 w-full h-20 flex flex-col justify-end px-2 md:px-20" style={{backgroundColor: '#313131'}}>
-			<div className="flex justify-between items-end pb-1">
+			<div className="flex justify-center md:justify-between items-end pb-1">
 				<Image 
 					src="/BasedFriendsClear.png"
 					alt="based friends logo"
