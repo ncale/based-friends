@@ -39,7 +39,7 @@ function filterByParams(data: FormattedAirstackData[], query: string, filterSele
   }
   // filter by search query
   const searchInput = new RegExp(query.toLowerCase())
-  return filteredData.filter((user) => searchInput.test(user.username))
+  return filteredData.filter((user) => searchInput.test(user.username) || searchInput.test(user.displayName) || searchInput.test(user.fid))
 }
 
 const fetcher: Fetcher<FormattedAirstackData[], string> = (fid: string) => 
