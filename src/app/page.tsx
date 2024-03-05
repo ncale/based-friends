@@ -14,8 +14,15 @@ import { MouseEvent } from "react";
 
 function filterByParams(data: FormattedAirstackData[], query: string, filterSelection: FilterSelection) {
   let filteredData: FormattedAirstackData[] = []
-  // filter by following
-  filteredData = data.filter((user) => {
+  // filter empty users
+	filteredData = data.filter((user) => {
+		if (!user.displayName || !user.fid || !user.username || !user.avatar ) {
+			return false
+		}
+		return true
+	})
+	// filter by following
+  filteredData = filteredData.filter((user) => {
     if (filterSelection.followingFilter === "following") {
       return true
     } else if (filterSelection.followingFilter === "mutual") {
@@ -71,7 +78,6 @@ export default function HomePage() {
   // sort & filter handler functions
 	function handleFollowingFilterChange(e: MouseEvent) {
     const val = (e.target as HTMLButtonElement).value
-    console.log(val)
     if (["following", "mutual", "not following"].includes(val)) {
       setFilterInput({
         followingFilter: (e.target as HTMLButtonElement).value,
@@ -105,12 +111,12 @@ export default function HomePage() {
   const results = filterByParams(data, searchInput, filterInput)
 
   return (
-    <main className="flex px-2 md:px-20 flex-col md:flex-row">
+    <main className="flex px-2 md:px-20 md:flex-row">
       {/* side bar */}
       <SideBar searchInput={searchInput} onSearchChange={handleSearchChange} filterInput={filterInput} onFilterChange={handleFollowingFilterChange}/>
       
       {/* main body */}
-      <div className="w-full md:pl-2 md:ml-56">
+      <div className="w-full md:pl-2 md:ml-56 md:mt-20 mb-10" style={{marginTop: "7.5rem"}}>
         <FriendsList userList={results} />
       </div>
     </main>

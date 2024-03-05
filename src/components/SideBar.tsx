@@ -4,8 +4,6 @@ import { LuSearch } from "react-icons/lu";
 import { LuUserCheck2 } from "react-icons/lu";
 import { LuUsers2 } from "react-icons/lu";
 import { LuUserPlus2 } from "react-icons/lu";
-import { LuHeart } from "react-icons/lu";
-import { LuRefreshCcw } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { LuLayers } from "react-icons/lu";
 import { MouseEvent } from "react";
@@ -26,7 +24,8 @@ export default function SideBar({
 
 	return (
 	<>
-	<div className="mt-1 mb-2 flex md:hidden items-center">
+	{/* mobile menu */}
+	<div className="fixed top-20 z-50 w-full pr-4 pt-1 pb-2 flex md:hidden items-center h-min" style={{backgroundColor: '#313131'}}>
 		<IconContext.Provider value={{color: 'white'}}>
 			<LuSearch />
 		</IconContext.Provider>
@@ -38,6 +37,7 @@ export default function SideBar({
 			className="leading-none rounded-sm shadow-sm w-full p-1 ml-1"
 		/>
 	</div>
+	{/* desktop / tablet menu */}
 	<div className="fixed top-20 w-40 md:w-56 text-white mt-4 hidden md:block">
 			{/* Search Box */}
 			<div className="mt-1 flex items-center">
@@ -116,7 +116,7 @@ export default function SideBar({
 			<hr className="w-full my-1.5"/>
 
 			{/* Sorts */}
-			<ul className="hidden mb-1.5">
+			{/* <ul className="hidden mb-1.5">
 				<li className="text-sm leading-none">
 					<label>
 						<input type="radio" name="sort" value="most" checked={true} />
@@ -131,14 +131,14 @@ export default function SideBar({
 				</li>
 			</ul>
 			<ul className="hidden">
-				{/* <li className="text-sm leading-none mb-1 flex items-center">
+				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuHeart />
 					<button type="button" className="ml-1">Mutual Likes</button>
 				</li>
 				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuRefreshCcw />
 					<button type="button" className="ml-1">Mutual Recasts</button>
-				</li> */}
+				</li>
 				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuMessagesSquare />
 					<button type="button" className="ml-1">Recently Casted</button>
@@ -147,7 +147,7 @@ export default function SideBar({
 					<LuLayers />
 					<button type="button" className="ml-1">Recently Onchain</button>
 				</li>
-			</ul>
+			</ul> */}
 		</div>
 		</>
 	)
