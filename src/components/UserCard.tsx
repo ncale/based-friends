@@ -87,21 +87,19 @@ export default function UserCard( props: {
 	)
 
 	return (
-		<a href={`https://warpcast.com/${props.username}`} target="_blank" className="cursor-default">
-			<div className="bg-gray-200 rounded-md p-2 truncate flex justify-between">
+		<div className="bg-gray-200 rounded-md p-2 truncate flex justify-between">
+			<a href={`https://warpcast.com/${props.username}`} target="_blank" className="cursor-default">
 				{/* profile */}
 				<div className="flex items-center">
 					{/* pfp */}
 					{props.pfpUrl ? (
-						<a href={`https://warpcast.com/${props.username}`} target="_blank">
-							<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom">
-								<Avatar 
-									isBordered
-									color={isOnline ? "success" : "default"}
-									src={props.pfpUrl}
-									size="lg" />
-							</Tooltip>
-						</a>
+						<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom">
+							<Avatar 
+								isBordered
+								color={isOnline ? "success" : "default"}
+								src={props.pfpUrl}
+								size="lg" />
+						</Tooltip>
 					) : (
 						<></>
 					)}
@@ -136,7 +134,7 @@ export default function UserCard( props: {
 								</div>
 							</div>
 							{/* onchain button */}
-							<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="block">
+							<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="block cursor-default">
 								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
 									{isActiveOnchain ? (
 										<span className="text-xs py-0.5 leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold hidden md:block ">
@@ -163,42 +161,46 @@ export default function UserCard( props: {
 						</div>
 					</div>
 				</div>
+			</a>
 
-				{/* icons */}
-				<div className="hidden md:flex">
-					<IconContext.Provider value={{size: '11px'}}>
-						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
-							<span><LuLayers /></span>
-						</a>
-					</IconContext.Provider>
-					<IconContext.Provider value={{size:'12px'}}>
-						<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-1">
-							<span className="h-min"><LuMessagesSquare /></span>
-						</a>
-						<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
-							<span className="ml-1 h-min"><LuInfo /></span>
-						</Tooltip>
-					</IconContext.Provider>
-				</div>
-				<div className="flex md:hidden">
-					<IconContext.Provider value={{size: '22px'}}>
-						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
-							<span><LuLayers /></span>
-						</a>
-						<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-2">
-							<span className="h-min"><LuMessagesSquare /></span>
-						</a>
-						<Popover placement="left">
-							<PopoverTrigger>
-								<span className="ml-2 h-min"><LuInfo /></span>
-							</PopoverTrigger>
-							<PopoverContent>
-								{infoPopover}
-							</PopoverContent>
-						</Popover>
-					</IconContext.Provider>
-				</div>
+			<a href={`https://warpcast.com/${props.username}`} target="_blank" className="block w-full h-auto cursor-default">
+				
+			</a>
+
+			{/* icons */}
+			<div className="hidden md:flex">
+				<IconContext.Provider value={{size: '11px'}}>
+					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+						<span><LuLayers /></span>
+					</a>
+				</IconContext.Provider>
+				<IconContext.Provider value={{size:'12px'}}>
+					<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-1">
+						<span className="h-min"><LuMessagesSquare /></span>
+					</a>
+					<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
+						<span className="ml-1 h-min"><LuInfo /></span>
+					</Tooltip>
+				</IconContext.Provider>
 			</div>
-		</a>
+			<div className="flex md:hidden">
+				<IconContext.Provider value={{size: '22px'}}>
+					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+						<span><LuLayers /></span>
+					</a>
+					<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-2">
+						<span className="h-min"><LuMessagesSquare /></span>
+					</a>
+					<Popover placement="left">
+						<PopoverTrigger>
+							<span className="ml-2 h-min"><LuInfo /></span>
+						</PopoverTrigger>
+						<PopoverContent>
+							{infoPopover}
+						</PopoverContent>
+					</Popover>
+				</IconContext.Provider>
+			</div>
+		</div>
 	)
 }
