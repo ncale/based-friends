@@ -116,7 +116,7 @@ export default function SideBar({
 			<hr className="w-full my-1.5"/>
 
 			{/* Sorts */}
-			<ul className="hidden mb-1.5">
+			{/* <ul className="hidden mb-1.5">
 				<li className="text-sm leading-none">
 					<label>
 						<input type="radio" name="sort" value="most" checked={true} />
@@ -131,14 +131,14 @@ export default function SideBar({
 				</li>
 			</ul>
 			<ul className="hidden">
-				{/* <li className="text-sm leading-none mb-1 flex items-center">
+				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuHeart />
 					<button type="button" className="ml-1">Mutual Likes</button>
 				</li>
 				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuRefreshCcw />
 					<button type="button" className="ml-1">Mutual Recasts</button>
-				</li> */}
+				</li>
 				<li className="text-sm leading-none mb-1 flex items-center">
 					<LuMessagesSquare />
 					<button type="button" className="ml-1">Recently Casted</button>
@@ -147,7 +147,7 @@ export default function SideBar({
 					<LuLayers />
 					<button type="button" className="ml-1">Recently Onchain</button>
 				</li>
-			</ul>
+			</ul> */}
 		</div>
 		</>
 	)
