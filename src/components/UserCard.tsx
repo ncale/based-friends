@@ -192,7 +192,7 @@ export default function UserCard( props: {
 						<span className="h-min"><LuMessagesSquare /></span>
 					</a>
 					<Popover placement="left">
-						<PopoverTrigger>
+						<PopoverTrigger className="z-20">
 							<span className="ml-2 h-min cursor-pointer"><LuInfo /></span>
 						</PopoverTrigger>
 						<PopoverContent>
