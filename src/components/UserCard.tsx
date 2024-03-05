@@ -117,30 +117,44 @@ export default function UserCard( props: {
 						{/* online / active bar */}
 						<div className="flex items-center">
 							{/* online button */}
-							<a href={`https://warpcast.com/${props.username}`} target="_blank">
-								<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-									{isOnline ? (
-										<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">online</span>
-									) : (
-										<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold">offline</span>
-									)}
-								</Tooltip>
-							</a>
+							<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+								{isOnline ? (
+									<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold hidden md:inline">online</span>
+								) : (
+									<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold hidden md:inline">offline</span>
+								)}
+							</Tooltip>
+							<div className="md:hidden">
+								{isOnline ? (
+									<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">Seen {castMsg}</span>
+								) : (
+									<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold md:hidden">Seen {castMsg}</span>
+								)}
+							</div>
 							{/* onchain button */}
 							<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
-								{isActiveOnchain ? (
-									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+									{isActiveOnchain ? (
+											<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold hidden md:inline">
+												active onchain
+											</span>
+									) : (
+											<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold hidden md:inline">
+												not active onchain
+											</span>
+									)}
+								</Tooltip>
+								<div className="md:hidden">
+									{isActiveOnchain ? (
 										<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold">
-											active onchain
+											{`onchain ${onchainMsg}`}
 										</span>
-									</Tooltip>
-								) : (
-									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+									) : (
 										<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold">
-											not active onchain
+											{`onchain ${onchainMsg}`}
 										</span>
-									</Tooltip>
-								)}
+									)}
+								</div>
 							</a>
 						</div>
 					</div>
