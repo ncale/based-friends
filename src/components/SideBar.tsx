@@ -26,7 +26,8 @@ export default function SideBar({
 
 	return (
 	<>
-	<div className="mt-1 mb-2 flex md:hidden items-center">
+	{/* mobile menu */}
+	<div className="fixed top-20 z-50 w-full pr-4 pt-1 pb-2 flex md:hidden items-center h-min" style={{backgroundColor: '#313131'}}>
 		<IconContext.Provider value={{color: 'white'}}>
 			<LuSearch />
 		</IconContext.Provider>
@@ -38,6 +39,7 @@ export default function SideBar({
 			className="leading-none rounded-sm shadow-sm w-full p-1 ml-1"
 		/>
 	</div>
+	{/* desktop / tablet menu */}
 	<div className="fixed top-20 w-40 md:w-56 text-white mt-4 hidden md:block">
 			{/* Search Box */}
 			<div className="mt-1 flex items-center">
