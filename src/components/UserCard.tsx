@@ -106,10 +106,10 @@ export default function UserCard( props: {
 					{/* profile info */}
 					<div className="flex flex-col ml-2">
 						{/* display name */}
-						<h3 className="text-md leading-none cursor-default font-extrabold">{props.displayName}</h3>
+						<h3 className="text-md leading-none cursor-default font-extrabold overflow-hidden">{props.displayName}</h3>
 						{/* username */}
 						<div className="flex items-center">
-							<span className="text-sm leading-none cursor-default">{props.username}</span>
+							<span className="text-sm leading-none cursor-default">@{props.username}</span>
 							{props.followsMe ? <span className="text-xs leading-none rounded-sm ml-1.5 cursor-default" style={{border: "1px solid black", padding: "1px"}}>follows you</span> : ''}
 						</div>
 						{/* online / active bar */}
