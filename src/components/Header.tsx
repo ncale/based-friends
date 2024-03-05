@@ -10,6 +10,7 @@ export default async function Header() {
 					alt="based friends logo"
 					width={1018}
 					height={121}
+					priority
 					className="h-9 md:h-12 w-auto" />
 				<span className="hidden md:inline"><AuthButton/></span>
 			</div>
