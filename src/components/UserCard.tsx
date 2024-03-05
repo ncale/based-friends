@@ -170,7 +170,7 @@ export default function UserCard( props: {
 			{/* icons */}
 			<div className="hidden md:flex">
 				<IconContext.Provider value={{size: '11px'}}>
-					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="h-min">
 						<span><LuLayers /></span>
 					</a>
 				</IconContext.Provider>
@@ -179,13 +179,13 @@ export default function UserCard( props: {
 						<span className="h-min"><LuMessagesSquare /></span>
 					</a>
 					<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
-						<span className="ml-1 h-min"><LuInfo /></span>
+						<span className="ml-1 h-min cursor-pointer"><LuInfo /></span>
 					</Tooltip>
 				</IconContext.Provider>
 			</div>
 			<div className="flex md:hidden">
 				<IconContext.Provider value={{size: '22px'}}>
-					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="h-min">
 						<span><LuLayers /></span>
 					</a>
 					<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-2">
@@ -193,7 +193,7 @@ export default function UserCard( props: {
 					</a>
 					<Popover placement="left">
 						<PopoverTrigger>
-							<span className="ml-2 h-min"><LuInfo /></span>
+							<span className="ml-2 h-min cursor-pointer"><LuInfo /></span>
 						</PopoverTrigger>
 						<PopoverContent>
 							{infoPopover}
