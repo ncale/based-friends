@@ -2,7 +2,7 @@ import { IconContext } from "react-icons";
 import { LuLayers } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { LuInfo } from "react-icons/lu";
-import { Avatar, Tooltip } from "@nextui-org/react";
+import { Avatar, Tooltip, Popover, PopoverTrigger, PopoverContent } from "@nextui-org/react";
 
 export default function UserCard( props: { 
 		displayName: string
@@ -80,6 +80,11 @@ export default function UserCard( props: {
 			<span className="block text-xs leading-none">fid: {props.fid}</span>
 		</div>
 	)
+	const infoPopover = (
+		<div>
+			<span className="block text-md font-extrabold leading-none">fid: {props.fid}</span>
+		</div>
+	)
 
 	return (
 		<div className="bg-gray-200 rounded-md p-2 truncate flex justify-between">
@@ -140,7 +145,7 @@ export default function UserCard( props: {
 				</div>
 			</div>
 			{/* user stats */}
-			<div className="flex">
+			<div className="hidden md:flex">
 				<IconContext.Provider value={{size: '11px'}}>
 					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
 						<span><LuLayers /></span>
@@ -153,6 +158,26 @@ export default function UserCard( props: {
 					<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
 						<span className="ml-1 h-min"><LuInfo /></span>
 					</Tooltip>
+				</IconContext.Provider>
+			</div>
+			<div className="flex md:hidden">
+				<IconContext.Provider value={{size: '26px'}}>
+					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+						<span><LuLayers /></span>
+					</a>
+				</IconContext.Provider>
+				<IconContext.Provider value={{size:'26px'}}>
+					<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-2">
+						<span className="h-min"><LuMessagesSquare /></span>
+					</a>
+					<Popover placement="left">
+						<PopoverTrigger>
+							<span className="ml-2 h-min"><LuInfo /></span>
+						</PopoverTrigger>
+						<PopoverContent>
+							{infoPopover}
+						</PopoverContent>
+					</Popover>
 				</IconContext.Provider>
 			</div>
 		</div>
