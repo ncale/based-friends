@@ -87,99 +87,99 @@ export default function UserCard( props: {
 	)
 
 	return (
-		<div className="bg-gray-200 rounded-md p-2 truncate flex justify-between">
-			{/* profile */}
-			<div className="flex items-center">
-				{/* pfp */}
-				{props.pfpUrl ? (
-					<a href={`https://warpcast.com/${props.username}`} target="_blank">
-						<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom">
-							<Avatar 
-								isBordered
-								color={isOnline ? "success" : "default"}
-								src={props.pfpUrl}
-								size="lg" />
-						</Tooltip>
-					</a>
-				) : (
-					<></>
-				)}
-				{/* profile info */}
-				<div className="flex flex-col ml-2">
-					{/* display name */}
-					<h3 className="text-md leading-none cursor-default font-extrabold">{props.displayName}</h3>
-					{/* username */}
-					<div className="flex items-center">
-						<span className="text-sm leading-none cursor-default">{props.username}</span>
-						{props.followsMe ? <span className="text-xs leading-none rounded-sm ml-1.5 cursor-default" style={{border: "1px solid black", padding: "1px"}}>follows you</span> : ''}
-					</div>
-					{/* online / active bar */}
-					<div className="flex items-center">
-						{/* online button */}
+		<a href={`https://warpcast.com/${props.username}`} target="_blank" className="cursor-default">
+			<div className="bg-gray-200 rounded-md p-2 truncate flex justify-between">
+				{/* profile */}
+				<div className="flex items-center">
+					{/* pfp */}
+					{props.pfpUrl ? (
 						<a href={`https://warpcast.com/${props.username}`} target="_blank">
-							<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-								{isOnline ? (
-									<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">online</span>
-								) : (
-									<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold">offline</span>
-								)}
+							<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom">
+								<Avatar 
+									isBordered
+									color={isOnline ? "success" : "default"}
+									src={props.pfpUrl}
+									size="lg" />
 							</Tooltip>
 						</a>
-						{/* onchain button */}
-						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
-							{isActiveOnchain ? (
-								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-									<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold">
-										active onchain
-									</span>
+					) : (
+						<></>
+					)}
+					{/* profile info */}
+					<div className="flex flex-col ml-2">
+						{/* display name */}
+						<h3 className="text-md leading-none cursor-default font-extrabold">{props.displayName}</h3>
+						{/* username */}
+						<div className="flex items-center">
+							<span className="text-sm leading-none cursor-default">{props.username}</span>
+							{props.followsMe ? <span className="text-xs leading-none rounded-sm ml-1.5 cursor-default" style={{border: "1px solid black", padding: "1px"}}>follows you</span> : ''}
+						</div>
+						{/* online / active bar */}
+						<div className="flex items-center">
+							{/* online button */}
+							<a href={`https://warpcast.com/${props.username}`} target="_blank">
+								<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+									{isOnline ? (
+										<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">online</span>
+									) : (
+										<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold">offline</span>
+									)}
 								</Tooltip>
-							) : (
-								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-									<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold">
-										not active onchain
-									</span>
-								</Tooltip>
-							)}
-						</a>
+							</a>
+							{/* onchain button */}
+							<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+								{isActiveOnchain ? (
+									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+										<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold">
+											active onchain
+										</span>
+									</Tooltip>
+								) : (
+									<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+										<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold">
+											not active onchain
+										</span>
+									</Tooltip>
+								)}
+							</a>
+						</div>
 					</div>
 				</div>
+				{/* user stats */}
+				<div className="hidden md:flex">
+					<IconContext.Provider value={{size: '11px'}}>
+						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+							<span><LuLayers /></span>
+						</a>
+					</IconContext.Provider>
+					<IconContext.Provider value={{size:'12px'}}>
+						<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-1">
+							<span className="h-min"><LuMessagesSquare /></span>
+						</a>
+						<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
+							<span className="ml-1 h-min"><LuInfo /></span>
+						</Tooltip>
+					</IconContext.Provider>
+				</div>
+				<div className="flex md:hidden">
+					<IconContext.Provider value={{size: '22px'}}>
+						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+							<span><LuLayers /></span>
+						</a>
+						<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-2">
+							<span className="h-min"><LuMessagesSquare /></span>
+						</a>
+						<Popover placement="left">
+							<PopoverTrigger>
+								<span className="ml-2 h-min"><LuInfo /></span>
+							</PopoverTrigger>
+							<PopoverContent>
+								{infoPopover}
+							</PopoverContent>
+						</Popover>
+					</IconContext.Provider>
+				</div>
 			</div>
-			{/* user stats */}
-			<div className="hidden md:flex">
-				<IconContext.Provider value={{size: '11px'}}>
-					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
-						<span><LuLayers /></span>
-					</a>
-				</IconContext.Provider>
-				<IconContext.Provider value={{size:'12px'}}>
-					<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-1">
-						<span className="h-min"><LuMessagesSquare /></span>
-					</a>
-					<Tooltip content={infoTooltip} size="sm" radius="sm" closeDelay={10} offset={3} placement="right">
-						<span className="ml-1 h-min"><LuInfo /></span>
-					</Tooltip>
-				</IconContext.Provider>
-			</div>
-			<div className="flex md:hidden">
-				<IconContext.Provider value={{size: '26px'}}>
-					<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
-						<span><LuLayers /></span>
-					</a>
-				</IconContext.Provider>
-				<IconContext.Provider value={{size:'26px'}}>
-					<a href="https://app.converse.xyz/conversation" target="_blank" className="h-min items-start ml-2">
-						<span className="h-min"><LuMessagesSquare /></span>
-					</a>
-					<Popover placement="left">
-						<PopoverTrigger>
-							<span className="ml-2 h-min"><LuInfo /></span>
-						</PopoverTrigger>
-						<PopoverContent>
-							{infoPopover}
-						</PopoverContent>
-					</Popover>
-				</IconContext.Provider>
-			</div>
-		</div>
+		</a>
 	)
 }
