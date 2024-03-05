@@ -115,43 +115,47 @@ export default function UserCard( props: {
 							{props.followsMe ? <span className="text-xs leading-none rounded-sm ml-1.5 cursor-default" style={{border: "1px solid black", padding: "1px"}}>follows you</span> : ''}
 						</div>
 						{/* online / active bar */}
-						<div className="flex items-center">
+						<div className="flex md:flex-row md:items-center flex-col items-start justify-start mt-1">
 							{/* online button */}
-							<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
-								{isOnline ? (
-									<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold hidden md:inline">online</span>
-								) : (
-									<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold hidden md:inline">offline</span>
-								)}
-							</Tooltip>
-							<div className="md:hidden">
-								{isOnline ? (
-									<span className="text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">Seen {castMsg}</span>
-								) : (
-									<span className="text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold md:hidden">Seen {castMsg}</span>
-								)}
+							<div className="">
+								<div className="hidden md:inline">
+									<Tooltip content={castTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
+										{isOnline ? (
+											<span className="block py-0.5 text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">online</span>
+										) : (
+											<span className="block py-0.5 text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold">offline</span>
+										)}
+									</Tooltip>
+								</div>
+								<div className="md:hidden">
+									{isOnline ? (
+										<span className="block text-xs leading-none rounded-md px-1 bg-green-400 text-green-950 font-bold">Seen {castMsg}</span>
+									) : (
+										<span className="block text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold md:hidden">Seen {castMsg}</span>
+									)}
+								</div>
 							</div>
 							{/* onchain button */}
-							<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
+							<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank" className="block">
 								<Tooltip content={baseTooltip} size="sm" radius="sm" closeDelay={10} offset={0} placement="bottom-start">
 									{isActiveOnchain ? (
-											<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold hidden md:inline">
-												active onchain
-											</span>
+										<span className="text-xs py-0.5 leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold hidden md:block ">
+											active onchain
+										</span>
 									) : (
-											<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold hidden md:inline">
-												not active onchain
-											</span>
+										<span className="text-xs py-0.5 leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold hidden md:block ">
+											not active onchain
+										</span>
 									)}
 								</Tooltip>
 								<div className="md:hidden">
 									{isActiveOnchain ? (
-										<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-blue-400 text-blue-950 font-bold">
+										<span className="block mt-1 text-xs leading-none rounded-md px-1 bg-blue-400 text-blue-950 font-bold">
 											{`onchain ${onchainMsg}`}
 										</span>
 									) : (
-										<span className="text-xs leading-none ml-0.5 rounded-md px-1 bg-gray-300 text-gray-950 font-bold">
-											{`onchain ${onchainMsg}`}
+										<span className="block mt-1 text-xs leading-none rounded-md px-1 bg-gray-300 text-gray-950 font-bold">
+											{props.onchainTime ? `onchain ${onchainMsg}` : onchainMsg}
 										</span>
 									)}
 								</div>
@@ -159,7 +163,8 @@ export default function UserCard( props: {
 						</div>
 					</div>
 				</div>
-				{/* user stats */}
+
+				{/* icons */}
 				<div className="hidden md:flex">
 					<IconContext.Provider value={{size: '11px'}}>
 						<a href={`https://onceupon.gg/${props.onchainHash}`} target="_blank">
