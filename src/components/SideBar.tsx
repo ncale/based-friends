@@ -4,8 +4,6 @@ import { LuSearch } from "react-icons/lu";
 import { LuUserCheck2 } from "react-icons/lu";
 import { LuUsers2 } from "react-icons/lu";
 import { LuUserPlus2 } from "react-icons/lu";
-import { LuHeart } from "react-icons/lu";
-import { LuRefreshCcw } from "react-icons/lu";
 import { LuMessagesSquare } from "react-icons/lu";
 import { LuLayers } from "react-icons/lu";
 import { MouseEvent } from "react";
