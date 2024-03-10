@@ -32,8 +32,10 @@ export default function LogInPage() {
         className="flex flex-col items-center justify-center mt-2 md:hidden text-white"
         style={{ height: "60vh" }}
       >
-        <p>Welcome to BasedFriends!</p>
+        <p className="mb-4">Welcome to BasedFriends!</p>
+		<p className="mb-4">Connect with Farcaster to get started
         <AuthButton />
+		</p>
       </main>
     </>
   );
