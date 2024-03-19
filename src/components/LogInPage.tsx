@@ -27,9 +27,8 @@ export default function LogInPage() {
       {/* mobile view */}
       <main
         className="flex flex-col items-center justify-center mt-2 md:hidden text-white"
-        style={{ height: "60vh" }}>
-        
-        <p className="mb-4 text-5xl">Welcome to BasedFriends!</p>
+>
+        <p className="mb-20"> </p>
         <p className="mb-4 max-w-lg text-center">
           BasedFriends is a friends list based on your Farcaster social graph
           that tells you who is <span className="underline">online</span> and
@@ -45,11 +44,12 @@ export default function LogInPage() {
             Blockchain within the last 24 hours
           </p>
         </div>
-        
         <p className="mb-4">
           Connect with Farcaster to get started
-          <AuthButton />
         </p>
+        <div>
+          <AuthButton />
+        </div>
       </main>
     </>
   );
